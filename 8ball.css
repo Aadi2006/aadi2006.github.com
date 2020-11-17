@@ -1,7 +1,7 @@
 /*   This is the styling   */
 body{
     height: 948px;
-    background: linear-gradient(to right, #4b4b4b 0%, #000000 100%)
+    background: linear-gradient(to right, #4b4b4b 0%, #111111ee 100%);
     }
     h1{
     color:white;
