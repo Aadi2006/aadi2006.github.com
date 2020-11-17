@@ -4,6 +4,7 @@ count=1;
 text='';
 document.getElementById("answers").innerHTML='';
 question = document.getElementById('question').value;
+button=document.getElementById("button");
 // Function begins here
 function random(){
     question = document.getElementById('question').value;
@@ -55,8 +56,19 @@ else{alert("Whoops!, something's wrong, try again later")}
 
 }
 function keycode(event){
-    var x = event.keyCode;
+var x = event.keyCode;
   if (x == 13) {
-    document.getElementById("button").click();
+    button.click();
+    button.disabled=true;
+    button.innerHTML="Enter is pressed";
+    document.getElementById("button").id="WhenEnterIsPressed";
+    document.getElementById('question').value='';
+    setTimeout(reset_button,2000);
   }
+}
+function reset_button() {
+    button=document.getElementById("WhenEnterIsPressed");
+    button.id="button";
+    button.disabled=false;
+    button.innerHTML="Click this buttton to get the answer";
 }
