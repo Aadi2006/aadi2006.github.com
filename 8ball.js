@@ -3,10 +3,10 @@ document.getElementById("all").innerHTML="Your answers will be dislplayed here";
 count=1;
 text='';
 document.getElementById("answers").innerHTML='';
+question = document.getElementById('question').value;
 // Function begins here
 function random(){
- 
- question = document.getElementById('question').value;
+    question = document.getElementById('question').value;
  if(question.length == 0 || question == 'Enter here'){
  return alert("Please Enter a question")}
 ran = Math.floor(Math.random() * 3);
@@ -19,7 +19,7 @@ for (q of question){
     question=question+'?';
     break}
 }
- document.getElementById('all').innerHTML='⬇️ Answers are displayed below ⬇️ ';  
+document.getElementById('all').innerHTML='⬇️ Answers are displayed below ⬇️ '; 
 //Yes
 
 if (ran==0){
@@ -53,4 +53,10 @@ else{alert("Whoops!, something's wrong, try again later")}
 
 
 
+}
+function keycode(event){
+    var x = event.keyCode;
+  if (x == 13) {
+    document.getElementById("button").click();
+  }
 }
