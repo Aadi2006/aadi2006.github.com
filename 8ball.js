@@ -5,7 +5,7 @@ text='';
 document.getElementById("answers").innerHTML='';
 // Function begins here
 function random(){
-document.getElementById('all').innerHTML='Answers are displayed below';   
+document.getElementById('all').innerHTML='⬇️ Answers are displayed below ⬇️ ';   
  question = document.getElementById('question').value;
  if(question.length == 0 || question == 'Enter here'){
  return alert("Please Enter a question")}
