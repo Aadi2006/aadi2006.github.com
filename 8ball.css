@@ -2,19 +2,23 @@
 body{
     height: 948px;
     background: linear-gradient(to right, #4b4b4b 0%, #111111ee 100%);
+    background-color: #272727;
     }
     h1{
     color:white;
     text-align:center;
-         border-left: 6px solid black;
+    border-left: 6px solid black;
       background-color: #2F383D;
+      font-size: 40px;
     }
      p{
     color:white;
     text-align:center;
+    font-size: 19px;
+     line-height: 1.6;
         }
     input{
-        font-size:20px;
+        font-size:25px;
     opacity:0.5;
     text-align:center;
     display: block;
@@ -22,6 +26,11 @@ body{
       margin-right: auto;
         width:40%;
     
+    }
+    input:hover{
+      height: 5%;
+      width: 45%;
+      font-size: 30px;
     }
      #button {
     
@@ -31,7 +40,7 @@ body{
     
       padding: 10px 20px;
             text-align:center;
-      font-size: 15px;
+      font-size: 20px;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
@@ -43,7 +52,10 @@ body{
       box-shadow: 0 9px #999;
     }
     
-    #button:hover {background-color: #00CC00}
+    #button:hover {
+      background-color: #00CC00;
+      font-size: 25px;
+    }
     
   #button:active {
       background-color: #00CC00;
