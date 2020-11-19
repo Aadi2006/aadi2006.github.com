@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="8ball.css">
 <body>
     <h1 title="Made by Aadi Jain">This is a magic 8ball program</h1><br>
-    <p style=font-size:30px><strong>Ask your question</strong>:  </p>
-    <input id="question" type="text" placeholder="Enter here" onfocus="this.value=''" title="Write you question here" onkeydown="keycode(event)">
+    <p id="stopaskingtext"></p>
+    <p id="subtitle"><strong>Ask your question</strong>:  </p>
+    <input id="question" type="text" placeholder="Enter here" onfocus="this.value=''" title="Write you question here" onkeydown="keycode(event)" autocomplete="off">
     <br><br>
     <button onclick="random()" title="If you've written your question click or simply press Enter!" id="button">Click this buttton to get the answer</button><br><br>
     <p id="all"></p>
@@ -22,10 +23,10 @@
 </html>
 
 
-
 <!--
 Made by Aadi Jain
-This program is just made for fun, so don't believe every thing it says!
+This program is just made for fun and the answers are completely random, so don't believe every thing it says!
+
 Hope you like it,
 AJ
 !-->
