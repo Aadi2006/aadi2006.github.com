@@ -6,12 +6,37 @@ document.getElementById("answers").innerHTML='';
 var question = document.getElementById('question');
 button=document.getElementById("button");
 // Function begins here
+function GetRandomAnswer() {
+    ran = Math.floor(Math.random() * 5);
+    var question = document.getElementById('question').value;
+    if (ran==0 || ran==2){
+        var yesreps = ['As I see it, Yes', 'Yes','Definately','You may rely on it','without a doubt','signs point to yes','outlook yes','outlook good','Most likely','It is decidely so','it is certain']
+       var yesran = Math.floor(Math.random() *yesreps.length);
+        ans = (yesreps[yesran]);
+        return ans
+    }
+         //No
+     else if(ran==1 || ran==3){
+        var noreps = ["Don't count on it","My reply is no","My sources say no","Outlook not so good","very doubtful","No"]
+        noran = Math.floor(Math.random() *noreps.length);
+         noans = noreps[noran];
+          return noans
+        }
+         //Don't ask now
+     else if(ran==4){
+         var newreps = ["Better not tell you now","Ask again later","Cannot predict now","Concentrate and ask again","Reply hazy, Try again later"]
+         newran = Math.floor(Math.random() *newreps.length);
+         elans = newreps[newran];
+        return elans
+    }
+         //Something's wrong
+     else{alert("Whoops!, something's wrong, try again later")}
+}
 function random()
 {
-    var question = document.getElementById('question').value;
- if(question.length == 0 || question == 'Enter here'){
+var question = document.getElementById('question').value;
+ if(question.length == 0){
  return alert("Please Enter a question")}
-ran = Math.floor(Math.random() * 5);
 c = 0;
 for (q of question){
     c = c + 1;
@@ -22,36 +47,12 @@ for (q of question){
     break}
 }
 document.getElementById('all').innerHTML='⬇️ Answers are displayed below ⬇️ '; 
-//Yes
+var RandomAnswer = GetRandomAnswer();
+text = text +'<br>Question'+count+'- '+question+'   Anwer- '+RandomAnswer;
+        count=count+1;
+        alert(RandomAnswer);
+        document.getElementById('answers').innerHTML=text;
 
-if (ran==0 || ran==2){
-   var yesreps = ['As I see it, Yes', 'Yes','Definately','You may rely on it','without a doubt','signs point to yes','outlook yes','outlook good','Most likely','It is decidely so','it is certain']
-  var yesran = Math.floor(Math.random() *yesreps.length);
-   ans = (yesreps[yesran]);
-   text = text +'<br>Question'+count+'- '+question+'   Anwer- '+ans;
-   count=count+1;
-   document.getElementById('answers').innerHTML=text;
-    alert(ans)}
-    //No
-else if(ran==1 || ran==3){
-   var noreps = ["Don't count on it","My reply is no","My sources say no","Outlook not so good","very doubtful","No"]
-   noran = Math.floor(Math.random() *noreps.length);
-    noans = noreps[noran];
-    text = text +'<br>Question'+count+'- '+question+'   Anwer- '+noans
-    count=count+1;
-    document.getElementById('answers').innerHTML = text;
-    alert(noans);}
-    //Don't ask now
-else if(ran==4){
-    var newreps = ["Better not tell you now","Ask again later","Cannot predict now","Concentrate and ask again","Reply hazy, Try again later"]
-    newran = Math.floor(Math.random() *newreps.length);
-    elans = newreps[newran];
-    text = text +'<br>Question'+count+'- '+question+'   Anwer- '+elans;
-    count=count+1;
-    document.getElementById('answers').innerHTML = text;
-    alert(elans)}
-    //Something's wrong
-else{alert("Whoops!, something's wrong, try again later")}
 
 //Please just stop asking me so many questions!
 if(count>30) {
@@ -79,9 +80,9 @@ if(count>30) {
     button.id = "btasktomanyquestion";
 
 }
+}
 
 //Enter is pressed, what shall I do?
-}
 function keycode(event){
 var x = event.keyCode;
   if (x == 13) {
@@ -100,4 +101,42 @@ function reset_button() {
     button.id="button";
     button.disabled=false;
     button.innerHTML="Click this buttton to get the answer";
+}
+
+document.onkeydown = function(e) {
+    if (e.altKey && e.which == 86) {
+      speakbutton = document.getElementById('SpeakButton');
+      speakbutton.click();
+
+    } 
+}
+
+function speak() {
+    speakButton = document.getElementById('SpeakButton');
+    inputBox = document.getElementById('question');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.onstart = function() {
+}
+recognition.onresult = function(event) {
+    const current=event.resultIndex;
+    const transcript = event.results[current][0].transcript;
+    inputBox.value = transcript;
+    const speakrandomanswer = GetRandomAnswer();
+    readOutLoud(speakrandomanswer);
+    text = text +'<br>Question'+count+'- '+transcript+'   Anwser- '+speakrandomanswer;
+        count=count+1;
+        document.getElementById('answers').innerHTML=text;
+};
+speakButton.addEventListener('click',() => {
+    recognition.start();
+});
+function readOutLoud(message){
+    const speech = new SpeechSynthesisUtterance();
+    speech.volume=1;
+    speech.rate=1;
+    speech.pitch=1;
+    speech.text=message;
+    window.speechSynthesis.speak(speech);
+}
 }
