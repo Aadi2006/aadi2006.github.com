@@ -7,6 +7,7 @@ var question = document.getElementById('question');
 button=document.getElementById("button");
 // Function begins here
 function GetRandomAnswer() {
+    document.getElementById('all').innerHTML='⬇️ Answers are displayed below ⬇️ '; 
     ran = Math.floor(Math.random() * 5);
     var question = document.getElementById('question').value;
     if (ran==0 || ran==2){
@@ -46,7 +47,6 @@ for (q of question){
     question=question+'?';
     break}
 }
-document.getElementById('all').innerHTML='⬇️ Answers are displayed below ⬇️ '; 
 var RandomAnswer = GetRandomAnswer();
 text = text +'<br>Question'+count+'- '+question+'   Anwer- '+RandomAnswer;
         count=count+1;
